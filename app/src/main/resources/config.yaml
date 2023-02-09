@@ -1,0 +1,43 @@
+---
+shell: "true"
+
+imitators:
+- name: "East1"
+  connector:
+    tcpServerList:
+    - port: 41001
+      hostName: "0.0.0.0"
+  repository:
+    file:
+      filePath: "data.binary"
+  protocol:
+    type: "EAST"
+  sendingIntervalMillis: 4000
+  splitExp: "split"
+  splitHexExp:
+  - 83
+  - 13
+  repeat: true
+
+- name: "East2"
+  connector:
+    tcpServerList:
+      - port: 42001
+        hostName: "0.0.0.0"
+      - port: 42002
+        hostName: "0.0.0.0"
+  repository:
+    file:
+      filePath: "data.binary"
+  protocol:
+    type: "EAST"
+  sendingIntervalMillis: 4000
+  splitExp: "split"
+  splitHexExp:
+    - 83
+    - 13
+  repeat: true
+
+defaultTcpServer:
+  port: 19474
+  connectingTimeoutMillis: 4
